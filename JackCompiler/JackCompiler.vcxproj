@@ -116,11 +116,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ASTNode.h" />
+    <ClInclude Include="Parser.h" />
+    <ClInclude Include="TerminalASTNode.h" />
     <ClInclude Include="Token.h" />
     <ClInclude Include="Tokenizer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Token.cpp" />
+    <ClCompile Include="ASTNode.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Parser.cpp" />
+    <ClCompile Include="TerminalASTNode.cpp" />
     <ClCompile Include="Tokenizer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

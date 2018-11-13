@@ -1,0 +1,9 @@
+class Boo {
+	static int x, y;
+	field bool b;
+	
+	method bool foo(){
+		//var int temp;
+		
+	}
+}
