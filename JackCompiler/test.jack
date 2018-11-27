@@ -1,9 +1,13 @@
-class Boo {
+class test {
 	static int x, y;
 	field bool b;
 	
 	method bool foo(){
-		//var int temp;
-		
+	// comment
+		var int temp;
+		var bool z;
+		let z = true;
+		let x = 10 + 2;
+		return z;
 	}
 }

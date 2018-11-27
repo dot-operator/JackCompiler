@@ -1,0 +1,25 @@
+#pragma once
+
+enum Segment {
+	SEG_CONST,
+	SEG_ARG,
+	SEG_LOCAL,
+	SEG_STATIC,
+	SEG_THIS,
+	SEG_THAT,
+	SEG_POINTER,
+	SEG_TEMP,
+	SEG_NONE
+};
+
+enum Math {
+	MATH_ADD,
+	MATH_SUB,
+	MATH_NEG,
+	MATH_EQ,
+	MATH_GT,
+	MATH_LT,
+	MATH_AND,
+	MATH_OR,
+	MATH_NOT
+};

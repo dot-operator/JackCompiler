@@ -4,7 +4,7 @@
 
 using std::string;
 
-const string Tokenizer::symbols = "{}()[].,;+-*/&|<>=~";
+const string Tokenizer::symbols = "{}()[].,;+-*/&|<>=~!";
 
 char Tokenizer::nextChar()
 {
@@ -101,9 +101,8 @@ bool Tokenizer::isIdentifierChar(char c)
 	return true;
 }
 
-Tokenizer::Tokenizer(const string &path)
+Tokenizer::Tokenizer()
 {
-	loadFile(path);
 }
 
 
@@ -117,6 +116,11 @@ void Tokenizer::loadFile(const string & path)
 	if (file.is_open()) {
 		string line;
 		while (std::getline(file, line)) {
+			// strip comments
+			if (line.find("//") != line.npos) {
+				line = line.substr(0, line.find("//"));
+			}
+
 			strFileContents += line + "\n";
 		}
 		itFilePos = strFileContents.begin();

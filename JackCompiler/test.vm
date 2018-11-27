@@ -1,0 +1,21 @@
+function test.foo 2
+push arg 0
+pop pointer 0
+push const 0
+not
+push const 0
+not
+pop 1
+push const 0
+not
+push const 0
+not
+pop 1
+push const 10
+push const 10
+add
+push const 2
+pop static 0
+push 1
+push 1
+return

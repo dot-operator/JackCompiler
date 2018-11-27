@@ -1,15 +1,16 @@
 #pragma once
 #include "Tokenizer.h"
+#include "VMWriter.h"
 #include "ASTNode.h"
 
 class Parser
 {
 private:
 	Tokenizer lexer;
+	VMWriter writer;
 
 	ASTChild parseClassVarDec();
 	ASTChild parseSubroutine();
-	ASTChild parseParameterList();
 	ASTChild parseVarDec();
 	ASTChild parseDo();
 	ASTChild parseLet();
@@ -20,20 +21,23 @@ private:
 	ASTChild parseTerm();
 	ASTChild parseExpressionList();
 
-	ASTChild parseSubroutineCall();
-
-	static bool isKeywordType(Keyword kw);
-	static bool isKeywordSubDec(Keyword kw);
-	static bool isKeywordStatement(Keyword kw);
-	static bool isSymbolOperator(char sym);
-	static bool isSymbolUnaryOp(char sym);
+	ASTChild parseStatements();
 
 	Token expect(Token token, bool usevalue);
+	Token expectNow(Token token, bool usevalue);
+	std::string outputXML;
+
+	ASTChild root;
+	// Traverse AST and emit VM code.
+	void writeVMOutput(const std::string& outFile);
 public:
 	// Top-level parse: everything is done from here.
 	void parseClass();
+	inline std::string getOutput() {
+		return outputXML;
+	}
 
-	Parser(const std::string &path);
+	Parser(const std::vector<std::string>& files);
 	~Parser();
 };
 

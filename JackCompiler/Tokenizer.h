@@ -37,7 +37,7 @@ private:
 
 	Token curToken;
 public:
-	Tokenizer(const std::string &path);
+	Tokenizer();
 	~Tokenizer();
 
 	void loadFile(const std::string &path);

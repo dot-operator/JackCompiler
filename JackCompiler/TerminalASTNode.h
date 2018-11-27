@@ -6,8 +6,8 @@ class TerminalASTNode :
 	public ASTNode
 {
 private:
-	Token token;
 public:
+	Token token;
 	//void addChild(Token child);
 
 	std::string prettyPrint(unsigned tabDepth = 0) override;

@@ -1,3 +1,5 @@
+// Token and helper functions
+
 #pragma once
 #include <variant>
 #include <string>
@@ -48,9 +50,9 @@ static std::string TokenToString(TokenType type) {
 	case TOK_SYMBOL:
 		return "symbol";
 	case TOK_CONST_INT:
-		return "integer constant";
+		return "integerConstant";
 	case TOK_CONST_STRING:
-		return "string constant";
+		return "stringConstant";
 	}
 };
 
@@ -144,3 +146,64 @@ public:
 
 };
 
+
+static bool isKeywordType(Keyword kw)
+{
+	const static Keyword types[] = {
+		KWD_BOOL,
+		KWD_CHAR,
+		KWD_INT,
+	};
+	for (auto& k : types) {
+		if (kw == k)
+			return true;
+	}
+	return false;
+};
+
+static bool isKeywordSubDec(Keyword kw)
+{
+	const static Keyword subs[] = {
+		KWD_CONSTRUCTOR,
+		KWD_FUNCTION,
+		KWD_METHOD,
+	};
+	for (auto& k : subs) {
+		if (kw == k)
+			return true;
+	}
+	return false;
+}
+
+static bool isKeywordStatement(Keyword kw)
+{
+	const static Keyword statements[] = {
+		KWD_LET,
+		KWD_IF,
+		KWD_WHILE,
+		KWD_DO,
+		KWD_RETURN
+	};
+	for (auto& k : statements) {
+		if (kw == k)
+			return true;
+	}
+	return false;
+}
+
+static bool isSymbolOperator(char sym)
+{
+	const static std::string operators = "+-*/&|<>=";
+	if (operators.find(sym) != operators.npos)
+		return true;
+	return false;
+}
+
+
+static bool isSymbolUnaryOp(char sym)
+{
+	const static std::string unaryops = "-~";
+	if (unaryops.find(sym) != unaryops.npos)
+		return true;
+	return false;
+}

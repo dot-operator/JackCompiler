@@ -26,9 +26,33 @@ std::string ASTNode::prettyPrint(unsigned tabDepth)
 	return output;
 }
 
+ASTNode * ASTNode::firstChild()
+{
+	childIt = children.begin();
+	return childIt->get();
+}
+
+ASTNode * ASTNode::nextChild()
+{
+	if (hasMoreChildren()) {
+		return (childIt++)->get();
+	}
+	return nullptr;
+}
+
+ASTNode * ASTNode::getChild(const std::string & name)
+{
+	for (auto& child : children) {
+		if (child->getName() == name)
+			return child.get();
+	}
+	return nullptr;
+}
+
 ASTNode::ASTNode(const std::string & name)
 {
 	expressionName = name;
+	childIt = children.begin();
 }
 
 //ASTNode::ASTNode(const ASTNode & node) : children(std::move(node.children)), expressionName(node.expressionName)
